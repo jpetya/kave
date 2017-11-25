@@ -15,4 +15,9 @@ public class FoodServiceImpl implements FoodService {
 		return "OK: " + foodname;
 	}
 
+	@Override
+	public String getVersion() {
+		return "First version";
+	}
+
 }

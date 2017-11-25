@@ -14,5 +14,8 @@ public interface FoodService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String addFood(String foodname);
+
+	@Path("verion")
+	public String getVersion();
 	
 }
