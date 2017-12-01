@@ -1,5 +1,6 @@
 package web;
 
+import json.InputAddFood;
 import persistence.FoodProvider;
 
 public class FoodServiceImpl implements FoodService {
@@ -11,8 +12,13 @@ public class FoodServiceImpl implements FoodService {
 	}
 	
 	@Override
-	public String addFood(String foodname) {
-		return "OK: " + foodname;
+	public String addFood(InputAddFood addFoodInput) {
+		return foodProvider.addFood(addFoodInput.foodname);
+	}
+
+	@Override
+	public String healthCheck() {
+		return "OK";
 	}
 
 }

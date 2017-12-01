@@ -30,6 +30,21 @@
 		<artifactId>spring-web</artifactId>
 		<version>${spring.version}</version>
 	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.jaxrs</groupId>
+		<artifactId>jackson-jaxrs-json-provider</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-annotations</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>garfield</finalName>
@@ -49,5 +64,6 @@
   <properties>
   	<cxf.version>2.7.11</cxf.version>
   	<spring.version>3.2.18.RELEASE</spring.version>
+  	<jackson.version>2.5.1</jackson.version>
   </properties>
 </project>

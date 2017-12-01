@@ -4,9 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ProviderBeans {
+public class PersistenceBeans {
 
-	private static final String PROVIDER_FOOD_SERVICE = "providerFoodService";
+	public static final String PROVIDER_FOOD_SERVICE = "providerFoodService";
 	
 	@Bean(name=PROVIDER_FOOD_SERVICE)
 	public FoodProvider getFoodProvider() {
