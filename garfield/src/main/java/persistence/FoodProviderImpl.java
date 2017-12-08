@@ -4,7 +4,7 @@ public class FoodProviderImpl implements FoodProvider {
 
 	@Override
 	public String addFood(String foodname) {
-		return "{ \"yousent\": \"" + foodname + "\" }";
+		return "{ \"you sent\": \"" + foodname + "\" }";
 	}
 
 }

@@ -7,8 +7,11 @@ import org.springframework.context.annotation.ImportResource;
 import persistence.PersistenceBeans;
 
 @Configuration
-@Import({RestBeans.class, RestEndpoints.class, PersistenceBeans.class})
 @ImportResource({ "classpath:META-INF/cxf/cxf.xml" })
+@Import({
+	RestBeans.class, 
+	RestEndpoints.class, 
+	PersistenceBeans.class})
 public class WebserviceContext {
 
 }

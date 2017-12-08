@@ -18,7 +18,7 @@ public class FoodServiceImpl implements FoodService {
 
 	@Override
 	public String healthCheck() {
-		return "OK";
+		return "I'm running.";
 	}
 
 }
