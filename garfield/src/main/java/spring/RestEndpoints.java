@@ -36,9 +36,9 @@ public class RestEndpoints {
 	@Bean(name=JAXRS_SERVER)
 	public Server getJaxRsServer(){
 		JAXRSServerFactoryBean factory = RuntimeDelegate.getInstance().createEndpoint(jaxRsApiApplication(), JAXRSServerFactoryBean.class);
-		factory.setProviders(Arrays.<Object>asList(jsonProvider()));
 		factory.setServiceBean(this.foodService);
-		factory.setBus(springBus);
+		factory.setProviders(Arrays.<Object>asList(jsonProvider()));
+		factory.setBus(springbus);
 		
 		return factory.create();
 	}
@@ -49,10 +49,10 @@ public class RestEndpoints {
 		return provider;
 	}
 	
-	@Resource(name=Bus.DEFAULT_BUS_ID)
-	private SpringBus springBus;
-	
 	@Resource(name=RestBeans.REST_FOOD_SERVICE)
 	private FoodService foodService;
+	
+	@Resource(name=Bus.DEFAULT_BUS_ID)
+	SpringBus springbus;
 	
 }
