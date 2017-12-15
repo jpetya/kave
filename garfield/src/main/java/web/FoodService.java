@@ -16,6 +16,7 @@ import org.apache.cxf.jaxrs.model.wadl.Descriptions;
 import org.apache.cxf.jaxrs.model.wadl.DocTarget;
 
 import json.InputAddFood;
+import json.OutputAddFood;
 
 @WebService
 @Path("foodservice")
@@ -27,9 +28,9 @@ public interface FoodService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@POST
 	@Descriptions({
-		@Description(value = "New food id in json", target = DocTarget.RESPONSE),
+		//@Description(value = "New food id in json", target = DocTarget.RESPONSE),
 		@Description(value = "Add food to stock",   target = DocTarget.METHOD)})
-	public String addFood(InputAddFood addFoodInput);
+	public OutputAddFood addFood(InputAddFood addFoodInput);
 
 	@Path("uploadadv")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)

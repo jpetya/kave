@@ -1,7 +1,9 @@
 package persistence;
 
+import json.OutputAddFood;
+
 public interface FoodProvider {
 
-	public String addFood(String foodname);
+	public OutputAddFood addFood(String foodname);
 	
 }

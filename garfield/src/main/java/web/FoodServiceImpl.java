@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
 import json.InputAddFood;
+import json.OutputAddFood;
 import persistence.FoodProvider;
 
 public class FoodServiceImpl implements FoodService {
@@ -25,8 +26,8 @@ public class FoodServiceImpl implements FoodService {
 	}
 	
 	@Override
-	public String addFood(InputAddFood addFoodInput) {
-		return foodProvider.addFood(addFoodInput.foodname);
+	public OutputAddFood addFood(InputAddFood addFoodInput) {
+		return foodProvider.addFood(addFoodInput.getFoodname());
 	}
 
 	@Override
