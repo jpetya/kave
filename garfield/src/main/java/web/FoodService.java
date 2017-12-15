@@ -19,6 +19,7 @@ import json.InputAddFood;
 
 @WebService
 @Path("foodservice")
+@Consumes(MediaType.APPLICATION_JSON)
 public interface FoodService {
 	
 	@Path("addfood")
@@ -27,8 +28,8 @@ public interface FoodService {
 	@POST
 	@Descriptions({
 		@Description(value = "New food id in json", target = DocTarget.RESPONSE),
-		@Description(value = "Add a food to stock", target = DocTarget.METHOD)})
-	public String addFood(@Description(value = "Input params in json", target = DocTarget.PARAM) InputAddFood addFoodInput);
+		@Description(value = "Add food to stock",   target = DocTarget.METHOD)})
+	public String addFood(InputAddFood addFoodInput);
 
 	@Path("uploadadv")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)

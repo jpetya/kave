@@ -21,9 +21,10 @@ import web.FoodService;
 @Configuration
 public class RestEndpoints {
 
-	public static final String JAXRS_APP 	 = "application";
-	public static final String JAXRS_SERVER  = "server";   	 
-	public static final String JSON_PROVIDER = "jsonprovider";
+	public static final String JAXRS_APP 	  = "application";
+	public static final String JAXRS_SERVER   = "server";   	 
+	public static final String JSON_PROVIDER  = "jsonprovider";
+	public static final String WADL_GENERATOR = "wadlgenerator";
 	
 	@ApplicationPath("rest")
 	public class JaxRsApiApplication extends Application { }
@@ -37,7 +38,7 @@ public class RestEndpoints {
 	public Server getJaxRsServer(){
 		JAXRSServerFactoryBean factory = RuntimeDelegate.getInstance().createEndpoint(jaxRsApiApplication(), JAXRSServerFactoryBean.class);
 		factory.setServiceBean(this.foodService);
-		factory.setProviders(Arrays.<Object>asList(jsonProvider()));
+		factory.setProviders(Arrays.<Object>asList(jsonProvider(), wadlGenerator()));
 		factory.setBus(springbus);
 		
 		return factory.create();
@@ -47,6 +48,12 @@ public class RestEndpoints {
 	public JacksonJsonProvider jsonProvider() {
 		JacksonJsonProvider provider = new JacksonJsonProvider();
 		return provider;
+	}
+	
+	@Bean(name = WADL_GENERATOR)
+	public WadlGeneratorEx wadlGenerator() {
+		WadlGeneratorEx gen = new WadlGeneratorEx();
+		return gen;		
 	}
 	
 	@Resource(name=RestBeans.REST_FOOD_SERVICE)
