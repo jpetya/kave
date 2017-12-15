@@ -20,7 +20,6 @@ import json.OutputAddFood;
 
 @WebService
 @Path("foodservice")
-@Consumes(MediaType.APPLICATION_JSON)
 public interface FoodService {
 	
 	@Path("addfood")
@@ -28,7 +27,6 @@ public interface FoodService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@POST
 	@Descriptions({
-		//@Description(value = "New food id in json", target = DocTarget.RESPONSE),
 		@Description(value = "Add food to stock",   target = DocTarget.METHOD)})
 	public OutputAddFood addFood(InputAddFood addFoodInput);
 
