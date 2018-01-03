@@ -9,7 +9,8 @@ import persistence.PersistenceBeans;
 @Import({
 	RestBeans.class, 
 	RestEndpoints.class, 
-	PersistenceBeans.class})
+	PersistenceBeans.class,
+	WebserviceFilter.class})
 public class WebserviceContext {
 
 }
