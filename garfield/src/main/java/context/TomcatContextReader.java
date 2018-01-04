@@ -13,20 +13,35 @@ public class TomcatContextReader implements ContextReader {
 	private final Context ctx;
 	
 	private final Boolean DEFAULT_SECURITY_CHECK_TOKEN = true;
-	private final String  CONTEXT_ENV_SECURITY_CHECK_TOKEN = "env/security/checktoken";
+	private final String  CONTEXT_ENV_SECURITY_CHECK_TOKEN = "security/checktoken";
 	
 	public TomcatContextReader() throws NamingException {
-		ctx = new InitialContext();
+		try {
+			logger.debug("Initializing Tomcat context...");
+			
+			ctx = new InitialContext();
+			
+			logger.debug("Tomcat context initialized");
+		} catch (NamingException ex) {
+			logger.error("Tomcat initialization error");
+			throw ex;			
+		}
 	}	
+	
+	@SuppressWarnings("unchecked")
+	private <T> T readEnvironment(String name, T defaultvalue) {
+		try {
+			T lookup = (T) ctx.lookup("java:comp/env/" + name);
+			return lookup;
+		} catch (NamingException e) {
+			logger.error("Missing environment setting: " + name);
+			return defaultvalue;
+		}
+	}
 	
 	@Override
 	public Boolean checkSecurityToken() {
-		try {
-			return (Boolean)ctx.lookup("java:comp/" + CONTEXT_ENV_SECURITY_CHECK_TOKEN);
-		} catch (NamingException e) {
-			logger.error("Missing environment setting: " + CONTEXT_ENV_SECURITY_CHECK_TOKEN);
-			return DEFAULT_SECURITY_CHECK_TOKEN;
-		}
+		return readEnvironment(CONTEXT_ENV_SECURITY_CHECK_TOKEN, DEFAULT_SECURITY_CHECK_TOKEN);
 	}
 
 }
