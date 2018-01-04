@@ -2,7 +2,6 @@ package filter;
 
 import java.io.IOException;
 
-import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -11,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.filter.GenericFilterBean;
 
 import context.ContextReader;
 
-public class AuthServletFilter implements Filter{
+public class AuthServletFilter extends GenericFilterBean{
 
 	public final static String HTTP_HEADER_SECURITY_TOKEN = "Security-Token";
 	
