@@ -55,7 +55,12 @@
         </HTTPSamplerProxy>
         <hashTree>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-            <collectionProp name="HeaderManager.headers"/>
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Security-Token</stringProp>
+                <stringProp name="Header.value">oCadIwHNvo</stringProp>
+              </elementProp>
+            </collectionProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
