@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import filter.AuthServletFilter;
 
 @Configuration
-public class WebserviceFilter {
+public class FilterBeans {
 	
 	public static final String AUTH_SERVLET_FILTER = "AuthServletFilter"; 
 	

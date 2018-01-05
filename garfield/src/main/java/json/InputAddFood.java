@@ -2,7 +2,7 @@ package json;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement // for wadl generation. JSON objects show, if browser send "Accept: application/json"
+@XmlRootElement // for wadl generation. JSON objects show, if browser sends "Accept: application/json"
 public class InputAddFood {
 	
 	private String foodname;
