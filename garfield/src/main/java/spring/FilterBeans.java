@@ -15,5 +15,4 @@ public class FilterBeans {
 		return new AuthServletFilter();
 	}
 	
-	
 }

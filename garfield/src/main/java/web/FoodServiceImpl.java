@@ -2,13 +2,16 @@ package web;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import context.ContextReader;
 import json.InputAddFood;
 import json.OutputAddFood;
 import persistence.FoodProvider;
@@ -31,18 +34,27 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public Response uploadAdvertisement(Attachment attachment, HttpServletRequest request) {
-		try {
-			String userdir = System.getProperty("user.dir");
-			
-			attachment.transferTo(new File(userdir + "\\\\valami"));
+	public Response uploadAdvertisement(List<Attachment> attachments, HttpServletRequest request) {
+		if (attachments.size() != 1) {
+			logger.error("Exactly only one file can be uploaded");
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		else {
+			try {
+				String home = contextReader.getFileTransferHome().toString();
+				String filename = attachments.get(0).getContentDisposition().getFilename();
 				
-			logger.info("uploadAdvertisement");
-			
-			return Response.status(Response.Status.OK).build();
-		} catch (IOException e) {
-			return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+				attachments.get(0).transferTo(new File(home, filename));
+					
+				return Response.status(Response.Status.OK).build();
+			} catch (IOException e) {
+				logger.error(e);
+				return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+			}
 		}
 	}
+	
+	@Autowired
+	private ContextReader contextReader;
 
 }

@@ -1,5 +1,7 @@
 package web;
 
+import java.util.List;
+
 import javax.jws.WebService;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -33,6 +35,6 @@ public interface FoodService {
 	@Path("uploadadv")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@POST
-	public Response uploadAdvertisement(Attachment attachment, @Context HttpServletRequest request);
+	public Response uploadAdvertisement(List<Attachment> attachments, @Context HttpServletRequest request);
 	
 }

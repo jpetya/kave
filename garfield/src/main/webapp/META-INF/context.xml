@@ -2,6 +2,12 @@
 <Context>
 
 	<Environment
+		name="filetransfer/home"
+		value="C:\\Temp\\filetransfer"
+		type="java.lang.String"
+		override="true" />
+
+	<Environment
 		name="security/checktoken"
 		value="true"
 		type="java.lang.Boolean"

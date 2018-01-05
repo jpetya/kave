@@ -29,10 +29,10 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
           <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
             <collectionProp name="HTTPFileArgs.files">
-              <elementProp name="C:\Work\dataset.json" elementType="HTTPFileArg">
-                <stringProp name="File.path">C:\Work\dataset.json</stringProp>
-                <stringProp name="File.paramname">new1</stringProp>
-                <stringProp name="File.mimetype">text/plain</stringProp>
+              <elementProp name="wadl_info.jmx" elementType="HTTPFileArg">
+                <stringProp name="File.path">wadl_info.jmx</stringProp>
+                <stringProp name="File.paramname">wadlinfotest</stringProp>
+                <stringProp name="File.mimetype">application/xml</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>

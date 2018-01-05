@@ -1,5 +1,11 @@
 package context;
 
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -14,6 +20,8 @@ public class TomcatContextReader implements ContextReader {
 	
 	private final Boolean DEFAULT_SECURITY_CHECK_TOKEN = true;
 	private final String  CONTEXT_ENV_SECURITY_CHECK_TOKEN = "security/checktoken";
+	
+	private final String  CONTEXT_ENV_FILETRANSFER_HOME = "filetransfer/home";
 	
 	public TomcatContextReader() throws NamingException {
 		try {
@@ -42,6 +50,24 @@ public class TomcatContextReader implements ContextReader {
 	@Override
 	public Boolean checkSecurityToken() {
 		return readEnvironment(CONTEXT_ENV_SECURITY_CHECK_TOKEN, DEFAULT_SECURITY_CHECK_TOKEN);
+	}
+
+	@Override
+	public Path getFileTransferHome() throws IOException {
+		String env = readEnvironment(CONTEXT_ENV_FILETRANSFER_HOME, "");
+		
+		if (env.isEmpty())
+			throw new IOException();
+		else {
+			Path path = FileSystems.getDefault().getPath(env);
+			
+			if (Files.exists(path, LinkOption.NOFOLLOW_LINKS))
+				return path;
+			else {
+				logger.error("File transfer home dirtectory is not exists: " + env);
+				throw new IOException();
+			}
+		}
 	}
 
 }
