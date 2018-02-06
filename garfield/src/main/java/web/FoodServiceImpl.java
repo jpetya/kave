@@ -27,10 +27,10 @@ public class FoodServiceImpl implements FoodService {
 	}
 	
 	@Override
-	public OutputAddFood addFood(InputAddFood addFoodInput) {
-		logger.info("addFood:" + addFoodInput);
+	public OutputAddFood addFood(InputAddFood food) {
+		logger.info("addFood:" + food);
 		
-		return foodProvider.addFood(addFoodInput.getFoodname());
+		return foodProvider.addFood(food.getFoodname());
 	}
 
 	@Override

@@ -18,6 +18,12 @@ public class AuthServletFilter extends GenericFilterBean{
 
 	public final static String HTTP_HEADER_SECURITY_TOKEN = "Security-Token";
 	
+	private boolean isWadlQuery(HttpServletRequest request) {
+		String  query  = request.getQueryString();
+		
+		return (query != null) && query.equals("_wadl");
+	}
+	
 	private boolean isSecurityTokenOK(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		boolean mustcheck = contextReader.checkSecurityToken(); 
@@ -45,6 +51,9 @@ public class AuthServletFilter extends GenericFilterBean{
 		HttpServletRequest  servletRequest  = (HttpServletRequest)  request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
 		
+		if (isWadlQuery(servletRequest)) 
+			chain.doFilter(request, response);
+		else
 		if (isSecurityTokenOK(servletRequest, servletResponse))
 			chain.doFilter(request, response);
 	}

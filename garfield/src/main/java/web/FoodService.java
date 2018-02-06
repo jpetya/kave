@@ -2,6 +2,7 @@ package web;
 
 import java.util.List;
 
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -14,7 +15,6 @@ import javax.ws.rs.core.Response;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.model.wadl.Description;
-import org.apache.cxf.jaxrs.model.wadl.Descriptions;
 import org.apache.cxf.jaxrs.model.wadl.DocTarget;
 
 import json.InputAddFood;
@@ -28,13 +28,13 @@ public interface FoodService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@POST
-	@Descriptions({
-		@Description(value = "Add food to stock",   target = DocTarget.METHOD)})
-	public OutputAddFood addFood(InputAddFood addFoodInput);
+	@Description(value = "Add food to stock", target = DocTarget.METHOD)
+	public OutputAddFood addFood(@WebParam(name = "food") InputAddFood food);
 
 	@Path("uploadadv")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@POST
-	public Response uploadAdvertisement(List<Attachment> attachments, @Context HttpServletRequest request);
+	public Response uploadAdvertisement(@WebParam(name = "attachment") List<Attachment> attachments,
+										@WebParam(name = "request")    @Context HttpServletRequest request);
 	
 }
