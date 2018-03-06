@@ -10,7 +10,7 @@
 
 	<Environment
 		name="security/checktoken"
-		value="true"
+		value="false"
 		type="java.lang.Boolean"
 		override="false" />
 				

@@ -27,11 +27,29 @@
 	<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
 	<load-on-startup>1</load-on-startup>
   </servlet>
+  
+  <servlet>
+	<servlet-name>action</servlet-name>
+	<servlet-class>petshop.PetShopActionServlet</servlet-class>
+    <init-param>
+        <param-name>config</param-name>
+        <param-value>
+         	/WEB-INF/struts-config.xml
+        </param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>  
      
-  <servlet-mapping>
+<!--  <servlet-mapping>
 	<servlet-name>cxf</servlet-name>
 	<url-pattern>/*</url-pattern>
+  </servlet-mapping>-->
+  
+  <servlet-mapping>
+	<servlet-name>action</servlet-name>
+	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
   <session-config>
 	<session-timeout>60</session-timeout>
   </session-config>
@@ -44,5 +62,33 @@
 	<filter-name>AuthServletFilter</filter-name>
 	<url-pattern>/*</url-pattern>
   </filter-mapping>
+
+	<!-- Struts Tag Library Descriptors -->
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/tags/struts-bean</taglib-uri>
+			<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-html</taglib-uri>
+			<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-logic</taglib-uri>
+			<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-template</taglib-uri>
+			<taglib-location>/WEB-INF/struts-template.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-nested</taglib-uri>
+			<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/credilogic</taglib-uri>
+			<taglib-location>/WEB-INF/credilogic.tld</taglib-location>
+		</taglib>
+	</jsp-config>
   
 </web-app>
