@@ -18,8 +18,8 @@ public class EmployeeAction extends Action {
 			HttpServletResponse response) throws Exception {
 		logger.debug("EmployeeAction.execute");
 		
-		EmployeeForm employeeForm = (EmployeeForm) form;
-		employeeForm.setMessage("Hello World! Struts");		
+		//EmployeeForm employeeForm = (EmployeeForm) form;
+		//employeeForm.setMessage("Hello World! Struts");		
 		
         return mapping.findForward("success");
     }

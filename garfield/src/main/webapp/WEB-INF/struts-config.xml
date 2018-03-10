@@ -11,12 +11,12 @@
 	</form-beans>
 	
     <action-mappings>
-        <action path="/employee" type="petshop.EmployeeAction" name="employeeForm">
+        <action input="/employee.jsp" name="employeeForm" path="/employee" 
+        	type="petshop.EmployeeAction">
             <forward name="success" path="/employee.jsp" />
         </action>
-       	<action
-        	path="/welcome"
-            forward="/index.jsp"/>        
     </action-mappings>
+    
+    <message-resources parameter="petshop.EmployeeResource" />
  
 </struts-config>
