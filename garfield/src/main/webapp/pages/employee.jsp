@@ -5,7 +5,7 @@
 
 <html>
 	<head>
-		<spring:url value="carddesign.css" var="mainCss" />
+		<spring:url value="styles/carddesign.css" var="mainCss" />
 		<link href="${mainCss}" rel="stylesheet" />
 	</head>
 	<body>
