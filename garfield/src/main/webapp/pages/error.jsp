@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>error page</title>
 </head>
+	<p>error page</p>
 <body>
 
 </body>

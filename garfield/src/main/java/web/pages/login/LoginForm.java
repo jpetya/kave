@@ -1,4 +1,4 @@
-package petshop.login;
+package web.pages.login;
 
 import org.apache.struts.action.ActionForm;
 

@@ -1,4 +1,4 @@
-package petshop.login;
+package web.pages.employee;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,14 +9,17 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class LoginAction extends Action {
+public class EmployeeAction extends Action {
 
-	final static Logger logger = Logger.getLogger(LoginAction.class); 
+	final static Logger logger = Logger.getLogger(EmployeeAction.class); 
 	
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, 
 			HttpServletResponse response) throws Exception {
-		logger.debug("LoginAction.execute");
+		logger.debug("EmployeeAction.execute");
+		
+		//EmployeeForm employeeForm = (EmployeeForm) form;
+		//employeeForm.setMessage("Hello World! Struts");		
 		
         return mapping.findForward("success");
     }

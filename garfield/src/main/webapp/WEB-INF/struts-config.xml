@@ -6,19 +6,19 @@
 <struts-config>
 
  	<form-beans>
-	   <form-bean name="loginForm" type="petshop.login.LoginForm"/>
-	   <form-bean name="employeeForm" type="petshop.EmployeeForm"/>
+	   <form-bean name="loginForm" type="web.pages.login.LoginForm"/>
+	   <form-bean name="employeeForm" type="web.pages.employee.EmployeeForm"/>
 	</form-beans>
 	
     <action-mappings>
-        <action input="/pages/login.jsp" name="loginForm" path="/login" type="petshop.login.LoginAction">
+        <action input="/pages/login.jsp" name="loginForm" path="/login" type="web.pages.login.LoginAction">
             <forward name="success" path="/pages/error.jsp" />
         </action>
-        <action input="/pages/employee.jsp" name="employeeForm" path="/employee" type="petshop.EmployeeAction">
+        <action input="/pages/employee.jsp" name="employeeForm" path="/employee" type="web.pages.employee.EmployeeAction">
             <forward name="success" path="/pages/error.jsp" />
         </action>
     </action-mappings>
     
-    <message-resources parameter="petshop.EmployeeResource" />
+    <message-resources parameter="web.pages.employee.EmployeeResource" />
  
 </struts-config>
