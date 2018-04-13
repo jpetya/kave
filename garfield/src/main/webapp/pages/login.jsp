@@ -9,15 +9,11 @@
 		<link href="${mainCss}" rel="stylesheet" />
 	</head>
 	<body>
-		<h2>login source</h2>
-		<div style="color:blue">
-		<html:errors />
-		</div>
 		<div class="card">
     		<html:form action="/login" focus="username">
-				Username: <html:text property="userName" />    			
-        		<br />
-        		Password: <html:text property="password" />
+				<label>Username:</label><html:text property="userName" />
+				<label>Password:</label><html:password property="password" />
+				<div class="errors"><html:errors/></div>
         		<html:submit value="login" />
     		</html:form>
     	</div>

@@ -10,15 +10,20 @@
 	   <form-bean name="employeeForm" type="web.pages.employee.EmployeeForm"/>
 	</form-beans>
 	
+	<global-exceptions>
+		<exception key="error.io.key" type="java.io.IOException" path="/pages/error.jsp"/>
+	</global-exceptions>
+		
     <action-mappings>
         <action input="/pages/login.jsp" name="loginForm" path="/login" type="web.pages.login.LoginAction">
-            <forward name="success" path="/pages/error.jsp" />
+            <forward name="success" path="/pages/employee.jsp" />
+            <forward name="incorrectlogin" path="/pages/login.jsp" />
         </action>
         <action input="/pages/employee.jsp" name="employeeForm" path="/employee" type="web.pages.employee.EmployeeAction">
             <forward name="success" path="/pages/error.jsp" />
         </action>
     </action-mappings>
     
-    <message-resources parameter="web.pages.employee.EmployeeResource" />
+    <message-resources parameter="web.pages.ActionMessageResource" />
  
 </struts-config>

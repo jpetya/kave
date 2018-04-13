@@ -18,7 +18,7 @@ public class LoginAction extends Action {
 			HttpServletResponse response) throws Exception {
 		logger.debug("LoginAction.execute");
 		
-        return mapping.findForward("success");
+		return mapping.findForward("success");
     }
-	 
+	
 }
