@@ -1,5 +1,6 @@
 package web;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import javax.jws.WebParam;
@@ -12,10 +13,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBException;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.model.wadl.Description;
 import org.apache.cxf.jaxrs.model.wadl.DocTarget;
+import org.xml.sax.SAXException;
 
 import json.InputAddFood;
 import json.OutputAddFood;
@@ -36,5 +39,9 @@ public interface FoodService {
 	@POST
 	public Response uploadAdvertisement(@WebParam(name = "attachment") List<Attachment> attachments,
 										@WebParam(name = "request")    @Context HttpServletRequest request);
+	
+	@Path("readorder")
+	@POST
+	public void readOrder() throws JAXBException, FileNotFoundException, SAXException;
 	
 }

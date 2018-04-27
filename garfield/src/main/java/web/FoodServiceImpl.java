@@ -1,15 +1,18 @@
 package web;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBException;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.xml.sax.SAXException;
 
 import context.ContextReader;
 import json.InputAddFood;
@@ -52,6 +55,11 @@ public class FoodServiceImpl implements FoodService {
 				return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 			}
 		}
+	}
+
+	@Override
+	public void readOrder() throws JAXBException, FileNotFoundException, SAXException {
+		foodProvider.readOrder();		
 	}
 	
 	@Autowired
