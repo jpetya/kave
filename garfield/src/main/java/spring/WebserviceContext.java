@@ -15,7 +15,8 @@ import persistence.PersistenceBeans;
 	RestBeans.class, 
 	RestEndpoints.class, 
 	PersistenceBeans.class,
-	FilterBeans.class})
+	FilterBeans.class,
+	NoSQLBeans.class})
 public class WebserviceContext {
 	
 	@Bean
