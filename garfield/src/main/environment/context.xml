@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Context>
+<Context>
+
+	<Environment
+		name="filetransfer/home"
+		value="C:\\Temp\\filetransfer"
+		type="java.lang.String"
+		override="true" />
+
+	<Environment
+		name="security/checktoken"
+		value="false"
+		type="java.lang.Boolean"
+		override="false" />
+
+	<Environment
+		name="nosqldb/enabled"
+		value="false"
+		type="java.lang.Boolean"
+		override="false" />
+				
+</Context>
