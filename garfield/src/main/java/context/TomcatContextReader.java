@@ -18,10 +18,9 @@ public class TomcatContextReader implements ContextReader {
 	
 	private final Context ctx;
 	
-	private final Boolean DEFAULT_SECURITY_CHECK_TOKEN = true;
-	private final String  CONTEXT_ENV_SECURITY_CHECK_TOKEN = "security/checktoken";
-	
-	private final String  CONTEXT_ENV_FILETRANSFER_HOME = "filetransfer/home";
+	private final String  CONTEXT_ENV_SECURITY_CHECK_TOKEN 	= "security/checktoken";
+	private final String  CONTEXT_ENV_NOSQLDB_ENABLED 		= "nosqldb/enabled";
+	private final String  CONTEXT_ENV_FILETRANSFER_HOME 	= "filetransfer/home";
 	
 	public TomcatContextReader() throws NamingException {
 		try {
@@ -49,7 +48,7 @@ public class TomcatContextReader implements ContextReader {
 	
 	@Override
 	public Boolean checkSecurityToken() {
-		return readEnvironment(CONTEXT_ENV_SECURITY_CHECK_TOKEN, DEFAULT_SECURITY_CHECK_TOKEN);
+		return readEnvironment(CONTEXT_ENV_SECURITY_CHECK_TOKEN, true);
 	}
 
 	@Override
@@ -68,6 +67,11 @@ public class TomcatContextReader implements ContextReader {
 				throw new IOException();
 			}
 		}
+	}
+
+	@Override
+	public Boolean isNoSQLEnabled() {
+		return readEnvironment(CONTEXT_ENV_NOSQLDB_ENABLED, false);
 	}
 
 }

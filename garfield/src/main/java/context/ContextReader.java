@@ -7,5 +7,6 @@ public interface ContextReader {
 
 	public Boolean checkSecurityToken();
 	public Path getFileTransferHome() throws IOException;
+	public Boolean isNoSQLEnabled();
 	
 }
