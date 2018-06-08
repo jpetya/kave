@@ -25,14 +25,18 @@ public class NoSQLBeans {
     public MongoTemplate mongoTemplate() throws IOException {
 
     	if (contextReader.isNoSQLEnabled()) { 
-	        EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
-	
-	        mongo.setBindIp(MONGO_DB_URL);
+    		logger.debug("Trying to start MongoDB...");
 	
 	        try {
-	        	MongoClient mongoClient = mongo.getObject();
+		        EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
+		
+		        mongo.setBindIp(MONGO_DB_URL);
+
+		        MongoClient mongoClient = mongo.getObject();
 	
 	        	MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, MONGO_DB_NAME);
+
+	        	logger.debug("MongoDB is started");
 	
 	        	return mongoTemplate;
 	        } catch(Exception e) {
